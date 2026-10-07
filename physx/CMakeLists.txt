@@ -66,7 +66,9 @@ set(PX_GENERATE_GPU_PROJECTS      OFF)
 set(PX_GENERATE_GPU_PROJECTS_ONLY OFF)
 set(PX_BUILDSNIPPETS              OFF)
 set(PX_BUILDPVDRUNTIME            OFF)
-set(PX_FLOAT_POINT_PRECISE_MATH   OFF)
+# /fp:fast lets MSVC fold the zero angle guard in PxSlerp, so CCD on a body that
+# has not rotated produces a NaN pose.
+set(PX_FLOAT_POINT_PRECISE_MATH   ON)
 set(PX_SCALAR_MATH                OFF)
 
 # Dynamic CRT (/MD, /MDd), matching a typical consumer. Both sides must agree on
